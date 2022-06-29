@@ -15,7 +15,7 @@ public class CommentaryTest {
 	 * Should be left if name of user have lenght < 2 :-)
 	 */
 	@Test
-	public void shouldBeLeftCaseInvalidAuthor() {
+	public void shouldReturnInvalidAuthor() {
 
 		CommentaryData contentCommentary = new CommentaryData();
 		contentCommentary.author = new AuthorData("", "");
