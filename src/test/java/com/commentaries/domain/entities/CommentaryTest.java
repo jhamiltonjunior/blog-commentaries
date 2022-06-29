@@ -33,7 +33,7 @@ public class CommentaryTest {
 	}
 
 	@Test
-	public void shouldReturnInvalidUser() {
+	public void shouldReturnInvalidBody() {
 		CommentaryData contentCommentary = new CommentaryData();
 		contentCommentary.author = new AuthorData("I'm José Hamilton", "is this my id");
 
