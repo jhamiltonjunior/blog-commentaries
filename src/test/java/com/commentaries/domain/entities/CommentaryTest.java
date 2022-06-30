@@ -62,7 +62,7 @@ public class CommentaryTest {
 
 		Error toBeLeft = commentary.Left().get();
 
-		assertEquals(toBeLeft.toString(), new Error(new InvalidBody()).toString());
+		assertEquals(toBeLeft.toString(), new Error(new InvalidTitle()).toString());
 		assertEquals(commentary.isLeft(), true);
 	}
 
