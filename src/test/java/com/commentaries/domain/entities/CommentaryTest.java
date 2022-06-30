@@ -50,6 +50,23 @@ public class CommentaryTest {
 	}
 
 	@Test
+	public void shouldReturnInvalidTitle() {
+		CommentaryData contentCommentary = new CommentaryData();
+		contentCommentary.author = new AuthorData("I'm José Hamilton", "is this my id");
+
+		contentCommentary.body = "This is a valid body of commentary";
+		contentCommentary.title = "";
+		contentCommentary.createdAt = LocalDateTime.now();
+
+		Either<Error, Commentary> commentary = Commentary.create(contentCommentary);
+
+		Error toBeLeft = commentary.Left().get();
+
+		assertEquals(toBeLeft.toString(), new Error(new InvalidBody()).toString());
+		assertEquals(commentary.isLeft(), true);
+	}
+
+	@Test
 	public void shouldBeRight() {
 		// final AuthorData authorData = new AuthorData();
 		// authorData.name = "dddd";
