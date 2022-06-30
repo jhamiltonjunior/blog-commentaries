@@ -84,6 +84,24 @@ public class CommentaryTest {
 	}
 
 	@Test
+	public void shouldBeInvalidUpdatedAt() {
+		CommentaryData contentCommentary = new CommentaryData();
+		contentCommentary.author = new AuthorData("I'm José Hamilton", "is this my id");
+
+		contentCommentary.body = "This is a valid body of commentary";
+		contentCommentary.title = "This is a valid title of commentary";
+		contentCommentary.createdAt = LocalDateTime.now();
+		contentCommentary.updatedAt = null;
+
+		Either<Error, Commentary> commentary = Commentary.update(contentCommentary);
+
+		Error toBeLeft = commentary.Left().get();
+
+		assertEquals(toBeLeft.toString(), new Error(new InvalidUpdatedAt()).toString());
+		assertEquals(commentary.isLeft(), true);
+	}
+
+	@Test
 	public void shouldBeRight() {
 		// final AuthorData authorData = new AuthorData();
 		// authorData.name = "dddd";

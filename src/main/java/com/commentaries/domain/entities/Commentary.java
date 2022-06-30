@@ -81,7 +81,7 @@ public class Commentary {
         title.value()));
   }
 
-  public Either<Error, Commentary> update(CommentaryData article) {
+  public static Either<Error, Commentary> update(CommentaryData article) {
     final Either<InvalidAuthor, Author> authorOrError = Author.create(article.author);
     final Either<InvalidBody, Body> bodyOrError = Body.create(article.body);
     final Either<InvalidCreatedAt, CreatedAt> createdAtOrError = CreatedAt.create(article.createdAt);
