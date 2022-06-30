@@ -15,7 +15,7 @@ public class CommentaryTest {
 	 * Should be left if name of user have lenght < 2 :-)
 	 */
 	@Test
-	public void shouldReturnInvalidAuthor() {
+	public void shouldBeInvalidAuthor() {
 
 		CommentaryData contentCommentary = new CommentaryData();
 		contentCommentary.author = new AuthorData("", "");
@@ -33,7 +33,7 @@ public class CommentaryTest {
 	}
 
 	@Test
-	public void shouldReturnInvalidBody() {
+	public void shouldBeInvalidBody() {
 		CommentaryData contentCommentary = new CommentaryData();
 		contentCommentary.author = new AuthorData("I'm José Hamilton", "is this my id");
 
@@ -50,7 +50,7 @@ public class CommentaryTest {
 	}
 
 	@Test
-	public void shouldReturnInvalidTitle() {
+	public void shouldBeInvalidTilte() {
 		CommentaryData contentCommentary = new CommentaryData();
 		contentCommentary.author = new AuthorData("I'm José Hamilton", "is this my id");
 
@@ -63,6 +63,23 @@ public class CommentaryTest {
 		Error toBeLeft = commentary.Left().get();
 
 		assertEquals(toBeLeft.toString(), new Error(new InvalidTitle()).toString());
+		assertEquals(commentary.isLeft(), true);
+	}
+
+	@Test
+	public void shouldBeInvalidCreatedAt() {
+		CommentaryData contentCommentary = new CommentaryData();
+		contentCommentary.author = new AuthorData("I'm José Hamilton", "is this my id");
+
+		contentCommentary.body = "This is a valid body of commentary";
+		contentCommentary.title = "This is a valid title of commentary";
+		contentCommentary.createdAt = null;
+
+		Either<Error, Commentary> commentary = Commentary.create(contentCommentary);
+
+		Error toBeLeft = commentary.Left().get();
+
+		assertEquals(toBeLeft.toString(), new Error(new InvalidCreatedAt()).toString());
 		assertEquals(commentary.isLeft(), true);
 	}
 
