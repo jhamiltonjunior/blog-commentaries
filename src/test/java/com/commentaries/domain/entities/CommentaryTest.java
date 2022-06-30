@@ -89,7 +89,7 @@ public class CommentaryTest {
 		contentCommentary.author = new AuthorData("I'm José Hamilton", "is this my id");
 
 		contentCommentary.body = "This is a valid body of commentary";
-		contentCommentary.title = "This is a valid title of commentary";
+		contentCommentary.title = "This is a valid title of commentary.";
 		contentCommentary.createdAt = LocalDateTime.now();
 		contentCommentary.updatedAt = null;
 
