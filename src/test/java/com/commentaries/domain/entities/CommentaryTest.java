@@ -12,7 +12,7 @@ import com.commentaries.domain.entities.interfaces.*;
 
 public class CommentaryTest {
 	/**
-	 * Should be left if name of user have lenght < 2 :-)
+	 * Should be left if it is invalid author :-)
 	 */
 	@Test
 	public void shouldBeInvalidAuthor() {
